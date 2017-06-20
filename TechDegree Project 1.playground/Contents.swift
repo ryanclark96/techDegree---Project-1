@@ -13,7 +13,7 @@ var player11: [String: String] = ["Name": "Joe Kavalier", "Height": "39", "Exper
 var player12: [String: String] = ["Name": "Ben Finkelstein", "Height": "44", "Experience": "false", "Guardians": "Aaron and Jill Finkelstein"]
 var player13: [String: String] = ["Name": "Diego Soto", "Height": "41", "Experience": "true", "Guardians": "Robin and Sarika Soto"]
 var player14: [String: String] = ["Name": "Chloe Alaska", "Height": "47", "Experience": "false", "Guardians": "David and Jamie Alaska"]
-var player15: [String: String] = ["Name": "Arnold Willis", "Height": "43", "Experience": "false", "Guardian": "Claire Willis"]
+var player15: [String: String] = ["Name": "Arnold Willis", "Height": "43", "Experience": "false", "Guardians": "Claire Willis"]
 var player16: [String: String] = ["Name": "Phillip Helm", "Height": "44", "Experience": "true", "Guardians": "Thomas Helm and Eva Jones"]
 var player17: [String: String] = ["Name": "Les Clay", "Height": "42", "Experience": "true", "Guardians": "Wynomma Brown"]
 var player18: [String: String] = ["Name": "Herschel Krustofski", "Height": "45", "Experience": "true", "Guardians": "Hyman and Rachel Krustofski"]
@@ -86,7 +86,7 @@ for (var player) in unExperienced {
         teamRaptors.append(player)
     case 2:
         player["Team"] = "Sharks"
-        player["Player"] = "March 17th, 3pm"
+        player["Practice"] = "March 17th, 3pm"
         
         teamSharks.append(player)
     case 0:
@@ -99,45 +99,29 @@ for (var player) in unExperienced {
     }
 }
 
-// Creating logic for each teams letters
-var letters: [String] = []
-
 // Printing of letters to guardians 
 func printLetter(player: [String: String]) -> String {
-    return "Hello \(player["Guardian"]),\n\n" + "Your child \(player["Name"]) is joining the \(player["Team"]). The first practice is to be held at \(player["Practice"]), Look forward to seeing you there."
+   return "Dear \(player["Guardians"]!), Your child \(player["Name"]!) has been choosen for \(player["Team"]!). The first trainning session will be held on \(player["Practice"]!) we look forward to seeing you there and hope you will have a great season with the team."
 }
 
-// Shark letters 
+var letters: [String] = []
+
+//Creating seperate groups of letters for each team
+for player in teamRaptors {
+    letters.append(printLetter(player: player))
+}
 
 for player in teamSharks {
     letters.append(printLetter(player: player))
 }
 
-// Dragon letters 
 for player in teamDragons {
     letters.append(printLetter(player: player))
 }
 
-// Raptor letters 
-for player in teamRaptors {
-    letters.append(printLetter(player: player))
-}
-
-// Print letters and players
+// Print letter for each player
 for letter in letters {
     print(letter)
-}
-
-for player in teamSharks {
-    print(player)
-}
-
-for player in teamDragons {
-    print(player)
-}
-
-for player in teamRaptors {
-    print(player)
 }
 
 
